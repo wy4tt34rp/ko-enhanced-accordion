@@ -1,0 +1,42 @@
+{
+  "name": "ko/enhanced-accordion-item",
+  "d4Shortcode": "",
+  "title": "Accordion Item",
+  "titles": "Accordion Items",
+  "moduleClassName": "ko_enhanced_accordion_item",
+  "moduleOrderClassName": "ko_enhanced_accordion_item",
+  "category": "child-module",
+  "attributes": {
+    "module": { "type": "object", "selector": "{{selector}}", "default": { "meta": { "adminLabel": { "desktop": { "value": "Accordion Item" } } }, "decoration": { "border": { "desktop": { "value": { "radius": { "topLeft": "10px", "topRight": "10px", "bottomLeft": "10px", "bottomRight": "10px", "sync": "on" } } } } } }, "settings": { "meta": { "adminLabel": {} }, "advanced": { "htmlAttributes": {} }, "decoration": { "attributes": {}, "background": {}, "sizing": {}, "spacing": {}, "border": {}, "boxShadow": {}, "filters": {}, "transform": {}, "animation": {}, "overflow": {}, "disabledOn": {}, "transition": {}, "position": {}, "zIndex": {}, "scroll": {}, "sticky": {} } } },
+    "itemTitle": { "type": "object", "label": "Title", "selector": "{{selector}} .ko_enhanced_accordion_item__title", "elementType": "title", "inlineEditor": "plainText", "default": { "innerContent": { "desktop": { "value": "Accordion Item" } } }, "settings": { "innerContent": { "groupType": "group-item", "item": { "groupSlug": "contentItem", "attrName": "itemTitle.innerContent", "priority": 10, "render": true, "label": "Title", "description": "Enter the accordion item title.", "features": { "responsive": false, "sticky": false, "dynamicContent": true }, "component": { "name": "divi/text", "type": "field" } } }, "decoration": { "font": {}, "spacing": {}, "textShadow": {} } } },
+    "content": { "type": "object", "label": "Content", "selector": "{{selector}} .ko_enhanced_accordion_item__content-inner", "elementType": "title", "inlineEditor": "richText", "default": { "innerContent": { "desktop": { "value": "Add your accordion content here." } } }, "settings": { "innerContent": { "groupType": "group-items", "items": { "text": { "groupSlug": "contentItem", "attrName": "content.innerContent", "priority": 20, "render": true, "label": "Content", "features": { "dynamicContent": true }, "component": { "name": "divi/richtext", "type": "field" } } } }, "decoration": { "font": {}, "spacing": {}, "textShadow": {} } } },
+    "contentLinkStyle": {
+      "type": "object", "selector": "{{selector}}",
+      "default": { "advanced": {
+        "enabled": { "desktop": { "value": "off" } },
+        "linkColor": { "desktop": { "value": "#f16722" } },
+        "textSize": { "desktop": { "value": "16px" } },
+        "iconSize": { "desktop": { "value": "16px" } },
+        "iconGap": { "desktop": { "value": "10px" } }
+      } },
+      "settings": { "advanced": {
+        "enabled": { "groupType": "group-item", "item": { "groupSlug": "designContentLinks", "attrName": "contentLinkStyle.advanced.enabled", "label": "Enable Text CTA Links", "description": "Style links in this Accordion Item as text-only buttons with a right chevron.", "priority": 10, "render": true, "features": { "responsive": false, "sticky": false, "dynamicContent": false }, "component": { "name": "divi/toggle", "type": "field", "props": { "options": { "off": "off", "on": "on" }, "defaultValue": "off" } } } },
+        "linkColor": { "groupType": "group-item", "item": { "groupSlug": "designContentLinks", "attrName": "contentLinkStyle.advanced.linkColor", "label": "Link Color", "priority": 20, "render": true, "features": { "responsive": true, "sticky": false, "dynamicContent": false }, "component": { "name": "divi/color-picker", "type": "field" } } },
+        "textSize": { "groupType": "group-item", "item": { "groupSlug": "designContentLinks", "attrName": "contentLinkStyle.advanced.textSize", "label": "Text Size", "priority": 30, "render": true, "features": { "responsive": true, "sticky": false, "dynamicContent": false }, "component": { "name": "divi/range", "type": "field", "props": { "min": 1, "max": 100, "step": 1, "allowedUnits": ["px", "em", "rem"], "defaultUnit": "px" } } } },
+        "iconSize": { "groupType": "group-item", "item": { "groupSlug": "designContentLinks", "attrName": "contentLinkStyle.advanced.iconSize", "label": "Icon Size", "priority": 40, "render": true, "features": { "responsive": true, "sticky": false, "dynamicContent": false }, "component": { "name": "divi/range", "type": "field", "props": { "min": 1, "max": 100, "step": 1, "allowedUnits": ["px", "em", "rem"], "defaultUnit": "px" } } } },
+        "iconGap": { "groupType": "group-item", "item": { "groupSlug": "designContentLinks", "attrName": "contentLinkStyle.advanced.iconGap", "label": "Icon Gap", "priority": 50, "render": true, "features": { "responsive": true, "sticky": false, "dynamicContent": false }, "component": { "name": "divi/range", "type": "field", "props": { "min": 0, "max": 100, "step": 1, "allowedUnits": ["px", "em", "rem"], "defaultUnit": "px" } } } }
+      } }
+    }
+  },
+  "customCssFields": {
+    "accordionItem": { "label": "Accordion Item", "subName": "accordionItem", "selectorSuffix": ".ko_enhanced_accordion_item" },
+    "accordionTitle": { "label": "Title", "subName": "accordionTitle", "selectorSuffix": " .ko_enhanced_accordion_item__title > button" },
+    "accordionIcon": { "label": "Icon", "subName": "accordionIcon", "selectorSuffix": " .ko_enhanced_accordion_item__icon" },
+    "accordionContentPanel": { "label": "Content Panel", "subName": "accordionContentPanel", "selectorSuffix": " .ko_enhanced_accordion_item__content" },
+    "accordionContent": { "label": "Content", "subName": "accordionContent", "selectorSuffix": " .ko_enhanced_accordion_item__content-inner" }
+  },
+  "settings": { "content": "auto", "design": "auto", "advanced": "auto", "groups": {
+    "contentItem": { "panel": "content", "priority": 10, "groupName": "contentItem", "multiElements": true, "component": { "name": "divi/composite", "props": { "groupLabel": "Item" } } },
+    "designContentLinks": { "panel": "design", "priority": 10, "groupName": "designContentLinks", "multiElements": true, "component": { "name": "divi/composite", "props": { "groupLabel": "Content Links" } } }
+  } }
+}
