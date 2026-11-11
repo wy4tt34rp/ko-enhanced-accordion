@@ -3,7 +3,7 @@ Contributors: ko
 Tags: divi, accordion, accessibility
 Requires at least: 6.8
 Requires PHP: 7.4
-Stable tag: 1.1.15
+Stable tag: 1.1.16
 License: GPLv2 or later
 
 Adds the native Divi 5 module KO: Enhanced Accordion.
@@ -54,6 +54,10 @@ Item enabled on every grouped module for consistent one-open behavior.
 3. Verify an Accordion module on the front end and in the Visual Builder.
 
 == Changelog ==
+
+= 1.1.16 =
+* Fixed native Divi preset inheritance for accordion behavior, icons, backgrounds, item spacing, and item defaults on the frontend.
+* Prevented WordPress from injecting module schema defaults as local values before Divi resolves presets. Existing module defaults and explicit local overrides are preserved.
 
 = 1.1.15 =
 * Corrected Text CTA defaults to reproduce the Vela text-only button typography: #f16722, MuseoSans 700 at computed weight 500, 16px text and line height, and a 16px chevron.

@@ -1,8 +1,8 @@
 {
   "name": "ko-enhanced-accordion",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "private": true,
   "description": "Native Divi 5 enhanced accordion module.",
-  "scripts": { "build": "NODE_ENV=production webpack --config webpack.config.js", "validate": "node tests/validate-package.mjs" },
+  "scripts": { "build": "NODE_ENV=production webpack --config webpack.config.js", "validate": "node tests/validate-package.mjs", "test:presets": "php tests/preset-inheritance.php" },
   "devDependencies": { "@babel/core": "^7.28.0", "@babel/preset-env": "^7.28.0", "@babel/preset-react": "^7.27.1", "babel-loader": "^10.0.0", "webpack": "^5.100.0", "webpack-cli": "^6.0.1" }
 }

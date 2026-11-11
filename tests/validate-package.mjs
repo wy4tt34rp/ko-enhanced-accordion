@@ -1,7 +1,7 @@
 import fs from 'node:fs'; import path from 'node:path'; import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
-const expectedVersion = '1.1.15';
+const expectedVersion = '1.1.16';
 const expectedPluginDescription = ' * Description:       Adds KO: Enhanced Accordion for Divi 5. Add ko-enhanced-accordion-group to a common Row or Section to coordinate modules across columns.';
 const accordion = JSON.parse(read('src/components/accordion/module.json')); const item = JSON.parse(read('src/components/item/module.json'));
 const builtAccordion = JSON.parse(read('modules-json/accordion/module.json')); const builtItem = JSON.parse(read('modules-json/item/module.json'));

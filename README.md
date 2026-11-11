@@ -33,7 +33,8 @@ Website: https://velaagency.com
 
 ## Release checklist
 
-Run PHP and JavaScript syntax checks, build a versioned ZIP whose root folder is
+Run `npm run validate` and `npm run test:presets`, plus PHP and JavaScript syntax
+checks, then build a versioned ZIP whose root folder is
 `ko-enhanced-accordion`, inspect the ZIP contents, and compare the
 extracted package with canonical source. Live browser QA is still required after
 installation because source and package checks do not prove Divi runtime behavior.
@@ -44,3 +45,11 @@ Version 1.1.13 stored the Text CTA opt-in on the parent accordion. That setting
 does not automatically migrate to individual items. After upgrading, enable
 Text CTA Links under Accordion Item > Design > Content Links for each item that
 should use the treatment.
+
+## Preset inheritance
+
+Version 1.1.16 prevents WordPress from injecting schema defaults into unsaved
+attributes before Divi resolves native module presets. The registration filter
+applies only to the two Enhanced Accordion blocks. Divi and the Visual Builder
+continue to read the original metadata defaults, and explicit local settings
+continue to override presets. No site-specific styling is included.

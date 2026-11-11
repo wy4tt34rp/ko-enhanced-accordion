@@ -3,7 +3,7 @@
  * Plugin Name:       KO: Enhanced Accordion
  * Plugin URI:        https://velaagency.com
  * Description:       Adds KO: Enhanced Accordion for Divi 5. Add ko-enhanced-accordion-group to a common Row or Section to coordinate modules across columns.
- * Version:           1.1.15
+ * Version:           1.1.16
  * Author:            KO
  * Author URI:        https://velaagency.com
  * License:           GPL-2.0-or-later
@@ -14,10 +14,33 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'VELA_EA_VERSION', '1.1.15' );
+define( 'VELA_EA_VERSION', '1.1.16' );
 define( 'VELA_EA_PATH', plugin_dir_path( __FILE__ ) );
 define( 'VELA_EA_URL', plugin_dir_url( __FILE__ ) );
 define( 'VELA_EA_MODULE_JSON_PATH', VELA_EA_PATH . 'modules-json/' );
+
+/**
+ * Leave default resolution to Divi so presets are not treated as local overrides.
+ *
+ * WordPress otherwise injects top-level schema defaults before Divi merges preset
+ * values. Divi still reads the unchanged module.json defaults for modules without
+ * a preset; only the two registered WordPress block schemas omit those defaults.
+ */
+function vela_ea_preserve_divi_preset_defaults( $args, $block_type ) {
+	if ( ! in_array( $block_type, array( 'ko/enhanced-accordion', 'ko/enhanced-accordion-item' ), true )
+		|| ! isset( $args['attributes'] ) || ! is_array( $args['attributes'] ) ) {
+		return $args;
+	}
+
+	foreach ( $args['attributes'] as $name => $schema ) {
+		if ( is_array( $schema ) ) {
+			unset( $args['attributes'][ $name ]['default'] );
+		}
+	}
+
+	return $args;
+}
+add_filter( 'register_block_type_args', 'vela_ea_preserve_divi_preset_defaults', 10, 2 );
 
 function vela_ea_register_dependencies( $dependency_tree ) {
 	require_once VELA_EA_PATH . 'includes/class-vela-ea-modules.php';
